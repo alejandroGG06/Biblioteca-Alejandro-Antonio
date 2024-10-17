@@ -12,10 +12,10 @@ class Conexiones {
  public Connection conectar() {
      try {
          con= DriverManager.getConnection(url,usuario,password);
-         System.out.println("Conexion establecida");
+         System.out.println("Conexion establecida :)");
 
      } catch (Exception e) {
-         throw new RuntimeException(e);
+         System.out.println("No se localiza la base de datos");
      }
      return con;
  }
