@@ -1,4 +1,4 @@
-//@author AlejandroGpublic
+package org.example;//@author AlejandroGpublic
 
 import java.sql.Connection;
 import java.sql.DriverManager;
