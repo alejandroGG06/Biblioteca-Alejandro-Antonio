@@ -16,14 +16,15 @@ public DAOlibro() {
 }
 
 public void Insertarlibro(Libro lib) {
-String sql = "INSERT INTO libro (id,nombre) VALUES(?,?)";
+String sql = "INSERT INTO libro (id,titulo,isbn) VALUES(?,?,?)";
 
 try {
     Connection con= conexionbbdd.conectar();
     PreparedStatement ps = con.prepareStatement(sql);
 
     ps.setInt(1,lib.id);
-    ps.setString(2,lib.nombre);
+    ps.setString(2,lib.titulo);
+    ps.setString(3,lib.isbn);
     ps.executeUpdate();
     System.out.println("Se ha agregado el libro");
 
@@ -42,8 +43,10 @@ public List<Libro>listar(){
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
     int id = rs.getInt("id");
-    String nombre = rs.getString("nombre");
-        Libro lib= new Libro(id,nombre);
+    String titulo = rs.getString("titulo");
+    String isbn = rs.getString("isbn");
+        Libro lib= new Libro(id,titulo,isbn);
+        lista.add(lib);
         }
 
     } catch (Exception e) {
@@ -53,12 +56,13 @@ public List<Libro>listar(){
 }
 
     public void updateable(Libro lib) {
-    String sql = "UPDATE libro SET nombre = ? WHERE id = ?";
+    String sql = "UPDATE libro SET titulo=?,isbn=? WHERE id=?";
     try {
         Connection con= conexionbbdd.conectar();
         PreparedStatement ps=con.prepareStatement(sql);
-        ps.setString(1,lib.nombre);
-        ps.setInt(2,lib.id);
+        ps.setString(1,lib.titulo);
+        ps.setString(2,lib.isbn);
+        ps.setInt(3,lib.id);
         ps.executeUpdate();
 
         System.out.println("Se ha actualizado el libro");
@@ -71,6 +75,9 @@ public List<Libro>listar(){
     try {
         Connection con= conexionbbdd.conectar();
         PreparedStatement ps=con.prepareStatement(sql);
+        ps.setInt(1,id);
+        ps.executeUpdate();
+        System.out.println("Se ha eliminado el libro");
     } catch (SQLException e) {
         throw new RuntimeException(e);
     }
