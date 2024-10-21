@@ -34,6 +34,12 @@ public void menuLib_au(){
                     }
                     break;
             case 3:
+                System.out.println("ingrese el id del libro a eliminar");
+                int idLibroa=sc.nextInt();
+                System.out.println("ingrese el id del autor a eliminar");
+                int idAutora=sc.nextInt();
+
+                daoLibroAutor.deletela(idLibroa,idAutora);
                 break;
         }
 

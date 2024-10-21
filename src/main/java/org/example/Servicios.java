@@ -102,8 +102,8 @@ class Servicios {
         usuarioList.remove(id);
     }
 
-    public void deletela(int id){
-        daolibroautor.delet(id);
+    public void deletela(int id, int id2){
+        daolibroautor.delet(id,id2);
         autorlist.remove(id);
     }
 }

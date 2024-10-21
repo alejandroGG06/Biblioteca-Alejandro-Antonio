@@ -49,7 +49,7 @@ public void insertal(Libro_Autor libro_autor) {
         }
         return  listaLibroAutor;
     }
-    public void delet(int id){
+    public void delet(int id ,int id2){
     String sql = "delete from libro_autor where idLibro=? and idAutor=?";
 
     try {
