@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 class CrudLibro {
 
-DAOlibro daOlibro=new DAOlibro();
+Servicios daolibro=new Servicios();
 
 Scanner sc=new Scanner(System.in);
 
@@ -30,12 +30,12 @@ int opc=0;
             String isbnLibro=sc.next();
 
             Libro lib=new Libro(idLibro,nombreLibro,isbnLibro);
-            daOlibro.Insertarlibro(lib);
+            daolibro.Crear(lib);
             break;
 
         case 2:
             System.out.println("Listado de libros");
-            List<Libro>libros=daOlibro.listar();
+            List<Libro>libros=daolibro.getLibros();
             for(Libro l:libros) {
                 System.out.println(l);
             }
@@ -51,13 +51,13 @@ int opc=0;
 
             Libro libmod=new Libro(idmod,tituloLibro,isbnmod);
 
-            daOlibro.updateable(libmod);
+            daolibro.upgrade(libmod);
             break;
             case 4:
                 System.out.println("Eliminar libro");
                 System.out.println("introduzca el id del libro");
                 int iddell=sc.nextInt();
-                daOlibro.Delet(iddell);
+                daolibro.delete(iddell);
                 break;
     }
     }while (opc!=5);

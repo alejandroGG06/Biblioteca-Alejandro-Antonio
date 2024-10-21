@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CrudUsuario {
-    DAOUsuario daoUsuario=new DAOUsuario();
+   Servicios daousuario = new Servicios();
 
     Scanner sc=new Scanner(System.in);
 
@@ -23,12 +23,12 @@ public class CrudUsuario {
                     System.out.println("introduzca el nombre del Usuario");
                     String nombreUsuario=sc.next();
                     Usuario usuario=new Usuario(idUsuario,nombreUsuario);
-                    daoUsuario.InsertarUsuario(usuario);
+                    daousuario.CrearUsuario(usuario);
                     break;
 
                 case 2:
                     System.out.println("Listado de Usuarios");
-                    List<Usuario> usuarios=daoUsuario.listar();
+                    List<Usuario> usuarios=daousuario.getUsuarios();
                     for(Usuario u:usuarios) {
                         System.out.println(u);
                     }
@@ -42,13 +42,13 @@ public class CrudUsuario {
 
                     Usuario userMod=new Usuario(idmod,nomUser);
 
-                    daoUsuario.updateable(userMod);
+                    daousuario.upgradeUsuario(userMod);
                     break;
                 case 4:
                     System.out.println("Eliminar Usuario");
                     System.out.println("introduzca el id del Usuario");
                     int iddell=sc.nextInt();
-                    daoUsuario.Delet(iddell);
+                    daousuario.deleteUsuario(iddell);
                     break;
             }
         }while (opc!=5);

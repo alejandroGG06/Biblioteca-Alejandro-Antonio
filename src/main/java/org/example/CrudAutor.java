@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class CrudAutor {
 
-    DAOAutor daoAutor=new DAOAutor();
+    Servicios daoAutor=new Servicios();
 
     Scanner sc=new Scanner(System.in);
 
@@ -24,12 +24,12 @@ public class CrudAutor {
                     System.out.println("introduzca el nombre del autor");
                     String nombreAutor=sc.next();
                     Autor autor=new Autor(idAutor,nombreAutor);
-                    daoAutor.InsertarAutor(autor);
+                    daoAutor.CrearAutor(autor);
                     break;
 
                 case 2:
                     System.out.println("Listado de autores");
-                    List<Autor> autores=daoAutor.listar();
+                    List<Autor> autores=daoAutor.getAutores();
                     for(Autor a:autores) {
                         System.out.println(a);
                     }
@@ -43,13 +43,13 @@ public class CrudAutor {
 
                     Autor autormod=new Autor(idmod,nomAutor);
 
-                    daoAutor.updateable(autormod);
+                    daoAutor.upgradeAutor(autormod);
                     break;
                 case 4:
                     System.out.println("Eliminar autor");
                     System.out.println("introduzca el id del autor");
                     int iddell=sc.nextInt();
-                    daoAutor.Delet(iddell);
+                    daoAutor.deleteAutor(iddell);
                     break;
             }
         }while (opc!=5);
