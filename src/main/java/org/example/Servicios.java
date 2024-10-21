@@ -15,11 +15,15 @@ class Servicios {
     List<Usuario>usuarioList;
     DAOUsuario daoUsuario;
 
+    List<Libro_Autor> libroAutorlist;
+    DAOlibroautor daolibroautor;
+
     //-----Inicializacion de los daos en la memoria-----\\
     public Servicios(){
         inciar();
         iniciarAutor();
         iniciarUsuario();
+        iniciarlibaut();
     }
 
     //----------Inicializar-------------\\
@@ -33,7 +37,10 @@ class Servicios {
         autorlist = daoAutor.listar();}
     public void iniciarUsuario() {
         daoUsuario = new DAOUsuario();
-        usuarioList = daoUsuario.listar();
+        usuarioList = daoUsuario.listar();}
+    public void iniciarlibaut(){
+        daolibroautor = new DAOlibroautor();
+        libroAutorlist=daolibroautor.list();
     }
 
     //---------Crear-------------------\\
@@ -49,6 +56,10 @@ class Servicios {
         daoUsuario.InsertarUsuario(usuario);
         usuarioList.add(usuario);
     }
+    public void crearLibAut(Libro_Autor libro){
+        daolibroautor.insertal(libro);
+        libroAutorlist.add(libro);
+    }
 
     //---------Listar-------------------\\
     public List<Libro> getLibros(){
@@ -60,7 +71,9 @@ class Servicios {
     public List<Usuario> getUsuarios(){
         return this.usuarioList;
     }
-
+    public List<Libro_Autor> getLibroAutor(){
+        return this.libroAutorlist;
+    }
     //--------Updates--------------------\\
     public void upgrade(Libro libro){
         daolibro.updateable(libro);
@@ -87,6 +100,11 @@ class Servicios {
     public void deleteUsuario(int id){
         daoUsuario.Delet(id);
         usuarioList.remove(id);
+    }
+
+    public void deletela(int id){
+        daolibroautor.delet(id);
+        autorlist.remove(id);
     }
 }
 
