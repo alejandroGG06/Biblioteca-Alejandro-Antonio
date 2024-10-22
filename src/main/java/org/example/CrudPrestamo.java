@@ -31,12 +31,12 @@ public class CrudPrestamo {
                     System.out.println("introduzca el id del libro");
                     int idLibro=sc.nextInt();
                     Prestamo prestamo=new Prestamo(idUsuario,fechaIni, fechaFin, idUsuario, idLibro);
-                    daoprestamo.CrearPrestamo(prestamo);
+                    daoprestamo.crearprestamo(prestamo);
                     break;
 
                 case 2:
                     System.out.println("Listado de Prestamos");
-                    List<Prestamo> prestamos=daoprestamo.getPrestamos();
+                    List<Prestamo> prestamos=daoprestamo.getPrestamo();
                     for(Prestamo p:prestamos) {
                         System.out.println(p);
                     }
@@ -55,13 +55,13 @@ public class CrudPrestamo {
                     int nuevoIdLibro=sc.nextInt();
                     Prestamo prestamoMod=new Prestamo(idmod,nuevaFechaIni, nuevaFechaFin,nuevoIdUsuario,nuevoIdLibro);
 
-                    daoprestamo.upgradePrestamo(prestamoMod);
+                    daoprestamo.upgradeprestamo(prestamoMod);
                     break;
                 case 4:
                     System.out.println("Eliminar prestamo");
                     System.out.println("introduzca el id del prestamo");
                     int iddell=sc.nextInt();
-                    daoprestamo.deletePrestamo(iddell);
+                    daoprestamo.deleteprestamo(iddell);
                     break;
             }
         }while (opc!=5);

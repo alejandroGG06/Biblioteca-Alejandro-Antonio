@@ -18,6 +18,9 @@ class Servicios {
     List<Libro_Autor> libroAutorlist;
     DAOlibroautor daolibroautor;
 
+    List<Prestamo>prestamoList;
+    DAOPrestamo daoPrestamo;
+
     //-----Inicializacion de los daos en la memoria-----\\
     public Servicios(){
         inciar();
@@ -42,6 +45,10 @@ class Servicios {
         daolibroautor = new DAOlibroautor();
         libroAutorlist=daolibroautor.list();
     }
+    public void iniciarprestamo() {
+        daoPrestamo = new DAOPrestamo();
+        prestamoList=daoPrestamo.listar();
+    }
 
     //---------Crear-------------------\\
     public void Crear(Libro libro){
@@ -60,6 +67,10 @@ class Servicios {
         daolibroautor.insertal(libro);
         libroAutorlist.add(libro);
     }
+    public void crearprestamo(Prestamo prestamo){
+        daoPrestamo.InsertarPrestamo(prestamo);
+        prestamoList.add(prestamo);
+    }
 
     //---------Listar-------------------\\
     public List<Libro> getLibros(){
@@ -74,6 +85,9 @@ class Servicios {
     public List<Libro_Autor> getLibroAutor(){
         return this.libroAutorlist;
     }
+    public List<Prestamo> getPrestamo(){
+        return this.prestamoList;
+    }
     //--------Updates--------------------\\
     public void upgrade(Libro libro){
         daolibro.updateable(libro);
@@ -87,7 +101,10 @@ class Servicios {
         daoUsuario.updateable(usuario);
         usuarioList.add(usuario);
     }
-
+    public void upgradeprestamo(Prestamo prestamo){
+        daoPrestamo.updateable(prestamo);
+        prestamoList.add(prestamo);
+    }
     //---------Eliminar--------------------\\
     public void delete(int id){
         daolibro.Delet(id);
@@ -105,6 +122,10 @@ class Servicios {
     public void deletela(int id, int id2){
         daolibroautor.delet(id,id2);
         autorlist.remove(id);
+    }
+    public void deleteprestamo(int id){
+        daoPrestamo.Delet(id);
+        prestamoList.remove(id);
     }
 }
 
